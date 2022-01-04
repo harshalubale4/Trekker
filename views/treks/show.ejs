@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show</title>
+</head>
+
+<body>
+    <h1>
+        <%= trek.title%>
+    </h1>
+    <h2>
+        <%= trek.location %>
+    </h2>
+    <p>
+    <form action="/treks/<%= trek._id %>?_method=delete" method="post">
+        <button>Delete</button>
+    </form>
+    </p>
+    <footer>
+        <a href="/treks/<%=trek._id%>/edit">Edit Details</a>
+        <br>
+        <a href="/treks">Show all Treks</a>
+        <br>
+    </footer>
+</body>
+
+</html>

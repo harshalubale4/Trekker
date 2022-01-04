@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treks</title>
+</head>
+
+<body>
+    <h1>
+        All Treks
+    </h1>
+    <a href="/treks/new">Create a New Trek Spot</a>
+    <ul>
+        <% for (let trek of treks){ %>
+            <li>
+                <%= trek.title%>
+                    <a href="/treks/<%= trek._id%>">Details</a>
+            </li>
+            <% } %>
+    </ul>
+
+</body>
+
+</html>

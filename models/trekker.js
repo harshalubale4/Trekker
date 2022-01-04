@@ -16,6 +16,6 @@ const TrekkerSchema = new Schema({
     }
 })
 
-const Trekker = new mongoose.model("Trekker", TrekkerSchema);
+const Trek = new mongoose.model("Trek", TrekkerSchema);
 
-module.exports = Trekker;
+module.exports = Trek;
