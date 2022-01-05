@@ -4,7 +4,9 @@ const path = require("path")
 const methodOverride = require("method-override")
 const mongoose = require('mongoose');
 const Trek = require("./models/trekker")
+const ejsMate = require("ejs-mate");
 
+app.engine("ejs", ejsMate)
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "/views"))
 
