@@ -5,6 +5,9 @@ const TrekkerSchema = new Schema({
     title: {
         type: String
     },
+    image: {
+        type: String
+    },
     price: {
         type: String
     },

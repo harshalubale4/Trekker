@@ -1,5 +1,5 @@
 <% layout("layouts/boilerplate") %>
-    <h1>
+    <!-- <h1>
         All Treks
     </h1>
     <a href="/treks/new">Create a New Trek Spot</a>
@@ -10,4 +10,24 @@
                     <a href="/treks/<%= trek._id%>">Details</a>
             </li>
             <% } %>
-    </ul>
+    </ul> -->
+
+    <div class="cardContainer">
+        <% for (let trek of treks){ %>
+            <div class="cardOfTrek">
+                <img src="<%=trek.image%>" alt="" class="trekImage img-fluid">
+                <h1>
+                    <%=trek.title%>
+                </h1>
+                <div>
+                    <%=trek.description %>
+                </div>
+                <div class="text-muted">
+                    <%=trek.location %>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary">View <%=trek.title %> </button>
+                </div>
+            </div>
+            <% } %>
+    </div>
