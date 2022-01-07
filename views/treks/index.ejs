@@ -1,16 +1,7 @@
 <% layout("layouts/boilerplate") %>
-    <!-- <h1>
-        All Treks
+    <h1 class="text-center display-4">
+        Trek Spots
     </h1>
-    <a href="/treks/new">Create a New Trek Spot</a>
-    <ul>
-        <% for (let trek of treks){ %>
-            <li>
-                <%= trek.title%>
-                    <a href="/treks/<%= trek._id%>">Details</a>
-            </li>
-            <% } %>
-    </ul> -->
 
     <div class="cardContainer">
         <% for (let trek of treks){ %>
@@ -19,14 +10,14 @@
                 <h1>
                     <%=trek.title%>
                 </h1>
-                <div>
+                <p class="desc">
                     <%=trek.description %>
-                </div>
+                </p>
                 <div class="text-muted">
                     <%=trek.location %>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary">View <%=trek.title %> </button>
+                    <a href="/treks/<%=trek._id %>"><button class="btn btn-primary">View <%=trek.title %> </button></a>
                 </div>
             </div>
             <% } %>

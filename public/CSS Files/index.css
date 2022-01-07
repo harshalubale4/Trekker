@@ -25,3 +25,11 @@
 .trekImage{
 border-radius: 2em;
 }
+
+.desc{
+    overflow-y: hidden;
+    height: 15%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+}

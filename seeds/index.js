@@ -18,7 +18,8 @@ const seedingDB = async () => {
             title: trek.title,
             location: trek.location,
             description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati tempore doloremque quam, illum ullam officia quod aliquam at voluptatem mollitia ut sed exercitationem. Ratione eveniet maxime vero. Corporis, vero vitae.",
-            image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dHJla2tpbmd8ZW58MHx8MHx8&w=1000&q=80"
+            image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dHJla2tpbmd8ZW58MHx8MHx8&w=1000&q=80",
+            price: 500
         })
         await newTrek.save()
     }

@@ -1,20 +1,49 @@
 <% layout("layouts/boilerplate") %>
-    <h1>
+
+
+    <h1 class="text-center display-4">
         Edit Trek Spot
     </h1>
-    <form action="/treks/<%= trek._id %>?_method=put" method="post">
-        <div>
-            <label for="title">
-                Title:
-            </label>
-            <input type="text" name="trek[title]" id="title" value="<%= trek.title %>">
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form action="/treks/<%= trek._id %>?_method=put" method="post" method="post" class="mb-3">
+                <div class="mb-3">
+                    <label for="title" class="form-label">
+                        Title
+                    </label>
+                    <input type="text" name="trek[title]" id="title" class="form-control" value="<%= trek.title %>">
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="from-label">
+                        Location
+                    </label>
+                    <input type="text" name="trek[location]" id="location" value="<%= trek.location %>"
+                        class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="from-label">
+                        Image URL
+                    </label>
+                    <input type="text" name="trek[image]" id="image" class="form-control" value="<%= trek.image%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Trek Price</label>
+                    <div class="input-group w-50">
+                        <span class="input-group-text" id="price-label">💰</span>
+                        <input type="text" class="form-control" placeholder="0" aria-label="price-label"
+                            name="trek[price]" aria-describedby="price-label" id="price" value="<%= trek.price%>">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="from-label">
+                        Description
+                    </label>
+                    <textarea type="text" name="trek[description]" id="description"
+                        class="form-control "><%=trek.description %> </textarea>
+                </div>
+                <button class="btn btn-info">Update Trek Spot</button>
+            </form>
+            <a href="/treks"><button class="btn btn-success">All Treks</button></a>
         </div>
-        <div>
-            <label for="location">
-                Location:
-            </label>
-            <input type="text" name="trek[location]" id="location" value="<%= trek.location %>">
-        </div>
-        <button>Update Trek Spot</button>
-    </form>
-    <a href="/treks/<%= trek._id %> ">Back to Trek</a>
+    </div>

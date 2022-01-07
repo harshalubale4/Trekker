@@ -1,5 +1,5 @@
 <% layout("layouts/boilerplate") %>
-    <h1>
+    <!-- <h1>
         <%= trek.title%>
     </h1>
     <h2>
@@ -15,4 +15,32 @@
         <br>
         <a href="/treks">Show all Treks</a>
         <br>
-    </footer>
+    </footer> -->
+
+
+    <div class="row">
+        <div class="col-lg-6 bg-black p-2 rounded-2">
+            <img src="<%=trek.image  %> " alt="" class="img-fluid">
+        </div>
+        <div class="col-lg-6 d-flex flex-column justify-content-between align-self-center">
+            <h1 class="display-5 text-center">
+                <%=trek.title %>
+            </h1>
+            <p class="text-center">
+                <%=trek.description %>
+            </p>
+            <div>
+                Price is <%=trek.price %>Rs
+            </div>
+            <div class=" text-center text-muted">
+                <%= trek.location %>
+            </div>
+            <div class="d-flex flex-row flex-wrap justify-content-around mt-3">
+                <form action="/treks/<%= trek._id %>?_method=delete" method="post" class="d-inline">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+                <a href="/treks/<%=trek._id%>/edit" class="btn btn-info">Edit Details</a>
+            </div>
+            <a href="/treks" class="btn btn-primary mt-3">Show all Treks</a>
+        </div>
+    </div>
