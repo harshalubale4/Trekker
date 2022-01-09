@@ -1,22 +1,4 @@
 <% layout("layouts/boilerplate") %>
-    <!-- <h1>
-        <%= trek.title%>
-    </h1>
-    <h2>
-        <%= trek.location %>
-    </h2>
-    <p>
-    <form action="/treks/<%= trek._id %>?_method=delete" method="post">
-        <button>Delete</button>
-    </form>
-    </p>
-    <footer>
-        <a href="/treks/<%=trek._id%>/edit">Edit Details</a>
-        <br>
-        <a href="/treks">Show all Treks</a>
-        <br>
-    </footer> -->
-
 
     <div class="row">
         <div class="col-lg-6 bg-black p-2 rounded-2">
@@ -29,12 +11,15 @@
             <p class="text-center">
                 <%=trek.description %>
             </p>
+            <hr>
             <div>
-                Price is <%=trek.price %>Rs
+                Rs<%=trek.price %> / Head
             </div>
+            <hr>
             <div class=" text-center text-muted">
                 <%= trek.location %>
             </div>
+            <hr>
             <div class="d-flex flex-row flex-wrap justify-content-around mt-3">
                 <form action="/treks/<%= trek._id %>?_method=delete" method="post" class="d-inline">
                     <button class="btn btn-danger">Delete</button>

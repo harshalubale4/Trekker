@@ -24,9 +24,7 @@ mongoose.connect('mongodb://localhost:27017/trekker')
     })
 
 
-app.listen(3000, () => {
-    console.log("Server Started on Port 3000")
-})
+
 
 app.get("/", (req, res) => {
     res.render("home")
@@ -68,4 +66,13 @@ app.delete("/treks/:id", async (req, res) => {
     const { id } = req.params
     const deletedSpot = await Trek.findByIdAndDelete(id);
     res.redirect("/treks")
+})
+
+app.use((err, req, res, next) => {
+    res.send("Something Went Wrong")
+})
+
+
+app.listen(3000, () => {
+    console.log("Server Started on Port 3000")
 })

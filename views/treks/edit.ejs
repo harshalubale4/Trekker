@@ -7,40 +7,74 @@
 
     <div class="row">
         <div class="col-6 offset-3">
-            <form action="/treks/<%= trek._id %>?_method=put" method="post" method="post" class="mb-3">
+            <form action="/treks/<%= trek._id %>?_method=put" method="post" method="post" class="mb-3 validatedForm"
+                novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">
                         Title
                     </label>
-                    <input type="text" name="trek[title]" id="title" class="form-control" value="<%= trek.title %>">
+                    <input type="text" name="trek[title]" id="title" class="form-control" value="<%= trek.title %>"
+                        required>
+                    <div class="valid-feedback">
+                        Theek 🤠
+                    </div>
+                    <div class="invalid-feedback">
+                        Kripaya Title Dalne Ka Kasht Kare
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="location" class="from-label">
                         Location
                     </label>
                     <input type="text" name="trek[location]" id="location" value="<%= trek.location %>"
-                        class="form-control">
+                        class="form-control" required>
+                    <div class="valid-feedback">
+                        Theek 🤠
+                    </div>
+                    <div class="invalid-feedback">
+                        Kripaya Location Dale
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="from-label">
                         Image URL
                     </label>
-                    <input type="text" name="trek[image]" id="image" class="form-control" value="<%= trek.image%>">
+                    <input type="text" name="trek[image]" id="image" class="form-control" value="<%= trek.image%>"
+                        required>
+                    <div class="valid-feedback">
+                        Theek 🤠
+                    </div>
+                    <div class="invalid-feedback">
+                        Kripaya Chitra ka Pata Dijiye
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="price">Trek Price</label>
                     <div class="input-group w-50">
                         <span class="input-group-text" id="price-label">💰</span>
                         <input type="text" class="form-control" placeholder="0" aria-label="price-label"
-                            name="trek[price]" aria-describedby="price-label" id="price" value="<%= trek.price%>">
+                            name="trek[price]" aria-describedby="price-label" id="price" value="<%= trek.price%>"
+                            required>
+                        <div class="valid-feedback">
+                            Theek 🤠
+                        </div>
+                        <div class="invalid-feedback">
+                            Kimat Daliye Janab
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="from-label">
                         Description
                     </label>
-                    <textarea type="text" name="trek[description]" id="description"
-                        class="form-control "><%=trek.description %> </textarea>
+                    <textarea type="text" name="trek[description]" id="description" class="form-control "
+                        required><%=trek.description %> </textarea>
+                    <div class="valid-feedback">
+                        Theek 🤠
+                    </div>
+                    <div class="invalid-feedback">
+                        Apne Ehesas Ke Bare Me Vistar Me Bataye
+                    </div>
                 </div>
                 <button class="btn btn-info">Update Trek Spot</button>
             </form>
