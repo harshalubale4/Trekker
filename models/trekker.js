@@ -3,13 +3,14 @@ const Schema = mongoose.Schema;
 
 const TrekkerSchema = new Schema({
     title: {
-        type: String
+        type: String,
+        required: true
     },
     image: {
         type: String
     },
     price: {
-        type: String
+        type: Number
     },
     description: {
         type: String
