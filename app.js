@@ -5,10 +5,11 @@ const methodOverride = require("method-override")
 const mongoose = require('mongoose');
 const catchAsync = require("./utilities/CatchAsyncError")
 const Trek = require("./models/trekker")
+const Review = require("./models/review")
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utilities/ExpressError");
 const Joi = require('joi');
-const { trekkerSchema } = require("./validationSchemas")
+const { trekkerSchema, reviewSchema } = require("./validationSchemas")
 
 app.engine("ejs", ejsMate)
 app.set("view engine", "ejs")
@@ -20,6 +21,16 @@ app.use(express.urlencoded({ extended: true }))
 
 const validateTrekker = (req, res, next) => {
     const { error } = trekkerSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(",")
+        throw new ExpressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
+const validateReview = (req, res, next) => {
+    const { error } = reviewSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(",")
         throw new ExpressError(msg, 400);
@@ -59,15 +70,31 @@ app.post("/treks", validateTrekker, catchAsync(async (req, res) => {
     res.redirect(`/treks/${trek._id}`)
 }))
 
+app.delete("/treks/:id/reviews/:reviewId", catchAsync(async (req, res, enxt) => {
+    const { id, reviewId } = req.params;
+    await Trek.findByIdAndUpdate(id, { $pull: { reviews: reviewId } })
+    await Review.findByIdAndDelete(req.params.reviewId);
+    res.redirect(`/treks/${id}`);
+}))
+
 app.get('/treks/:id', catchAsync(async (req, res) => {
     const { id } = req.params
-    const trek = await Trek.findById(id)
+    const trek = await Trek.findById(id).populate('reviews')
     res.render("treks/show.ejs", { trek })
 }))
 
 app.get("/treks/:id/edit", catchAsync(async (req, res) => {
     const trek = await Trek.findById(req.params.id)
     res.render("treks/edit", { trek })
+}))
+
+app.post("/treks/:id/reviews", validateReview, catchAsync(async (req, res) => {
+    const trek = await Trek.findById(req.params.id);
+    const review = new Review(req.body.review);
+    trek.reviews.push(review);
+    await review.save();
+    await trek.save();
+    res.redirect(`/treks/${trek._id}`);
 }))
 
 app.put("/treks/:id", validateTrekker, catchAsync(async (req, res) => {

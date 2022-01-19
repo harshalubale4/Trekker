@@ -29,3 +29,42 @@
             <a href="/treks" class="btn btn-primary mt-3">Show all Treks</a>
         </div>
     </div>
+    <% for(let review of trek.reviews){ %>
+        <div class="card my-3">
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    Rating: <%=review.rating %>
+                </h5>
+                <p class="card-text">
+                    Review: <%=review.body %>
+                </p>
+                <form action="/treks/<%=trek._id %>/reviews/<%=review._id%>?_method=DELETE" method="post">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        <% }%>
+            <div>
+                <h3 class="display-5">
+                    Leave a Review
+                </h3>
+                <form action="/treks/<%=trek._id %>/reviews" method="POST" class="my-3 validatedForm" novalidate>
+                    <div class="my-3">
+                        <label class="form-label" for="rating">Rating</label>
+                        <input type="range" id="rating" class="form-range" min="1" max="5" name="review[rating]">
+                    </div>
+                    <div class="my-3">
+                        <label class="form-label" for="body">Review</label>
+                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
+                            required></textarea>
+                        <div class="valid-feedback">
+                            Theek 🤠
+                        </div>
+                        <div class="invalid-feedback">
+                            Khali Mat chodo bhaiya
+                        </div>
+                    </div>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+            </div>
