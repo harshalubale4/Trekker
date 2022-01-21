@@ -25,9 +25,10 @@ router.get("/new", (req, res) => {
     res.render("treks/new.ejs")
 })
 
-router.post("/", validateTrekker, catchAsync(async (req, res) => {
+router.post("/", validateTrekker, catchAsync(async (req, res, next) => {
     const trek = new Trek(req.body.trek)
     await trek.save()
+    req.flash('success', 'Successfully made a new Trek Spot');
     res.redirect(`/treks/${trek._id}`)
 }))
 
@@ -35,11 +36,19 @@ router.post("/", validateTrekker, catchAsync(async (req, res) => {
 router.get('/:id', catchAsync(async (req, res) => {
     const { id } = req.params
     const trek = await Trek.findById(id).populate('reviews')
+    if (!trek) {
+        req.flash('error', "Oopsies!! the Trek Spot Doesn't Exist")
+        res.redirect('/treks');
+    }
     res.render("treks/show.ejs", { trek })
 }))
 
 router.get("/:id/edit", catchAsync(async (req, res) => {
     const trek = await Trek.findById(req.params.id)
+    if (!trek) {
+        req.flash('error', "Oopsies!! the Trek Spot Doesn't Exist")
+        res.redirect('/treks');
+    }
     res.render("treks/edit", { trek })
 }))
 
@@ -47,12 +56,14 @@ router.get("/:id/edit", catchAsync(async (req, res) => {
 router.put("/:id", validateTrekker, catchAsync(async (req, res) => {
     const { id } = req.params
     const trek = await Trek.findByIdAndUpdate(id, { ...req.body.trek })
+    req.flash('success', 'Successfully Updated Trek Spot')
     res.redirect(`/treks/${trek._id}`)
 }))
 
 router.delete("/:id", catchAsync(async (req, res) => {
     const { id } = req.params
     const deletedSpot = await Trek.findByIdAndDelete(id);
+    req.flash('success', 'Successfully Deleted a Trek Spot')
     res.redirect("/treks")
 }))
 

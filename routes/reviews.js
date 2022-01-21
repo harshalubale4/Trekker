@@ -20,6 +20,7 @@ router.delete("/:reviewId", catchAsync(async (req, res, enxt) => {
     const { id, reviewId } = req.params;
     await Trek.findByIdAndUpdate(id, { $pull: { reviews: reviewId } })
     await Review.findByIdAndDelete(req.params.reviewId);
+    req.flash('success', 'Successfully Deleted a Review');
     res.redirect(`/treks/${id}`);
 }))
 
@@ -29,6 +30,7 @@ router.post("/", validateReview, catchAsync(async (req, res) => {
     trek.reviews.push(review);
     await review.save();
     await trek.save();
+    req.flash('success', 'Created a New Review')
     res.redirect(`/treks/${trek._id}`);
 }))
 
