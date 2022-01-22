@@ -1,22 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const catchAsync = require("../utilities/CatchAsyncError");
-const Trek = require("../models/trekker");
 const treks = require('../controllers/treks');
 const { isLoggedIn, isAuthor, validateTrekker } = require('../middleware/middleware');
 
-router.get('/', catchAsync(treks.index));
+router.route('/')
+    .get(catchAsync(treks.index))
+    .post(isLoggedIn,
+        validateTrekker,
+        catchAsync(treks.createTrekSpot));
 
-router.get("/new", isLoggedIn, treks.renderNewForm);
+router.get("/new",
+    isLoggedIn,
+    treks.renderNewForm);
 
-router.post("/", isLoggedIn, validateTrekker, catchAsync(treks.createTrekSpot));
+router.route('/:id')
+    .get(catchAsync(treks.showTrekSpot))
+    .put(isAuthor,
+        isLoggedIn,
+        validateTrekker,
+        catchAsync(treks.updateTrekSpot))
+    .delete(isAuthor,
+        isLoggedIn,
+        catchAsync(treks.deleteTrekSpot));
 
-router.get('/:id', catchAsync(treks.showTrekSpot));
-
-router.get("/:id/edit", isAuthor, isLoggedIn, catchAsync(treks.renderEditForm));
-
-router.put("/:id", isAuthor, isLoggedIn, validateTrekker, catchAsync(treks.updateTrekSpot));
-
-router.delete("/:id", isAuthor, isLoggedIn, catchAsync(treks.deleteTrekSpot));
+router.get("/:id/edit",
+    isAuthor,
+    isLoggedIn,
+    catchAsync(treks.renderEditForm));
 
 module.exports = router;
