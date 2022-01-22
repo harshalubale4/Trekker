@@ -20,13 +20,19 @@
                 <%= trek.location %>
             </div>
             <hr>
-            <div class="d-flex flex-row flex-wrap justify-content-around mt-3">
-                <form action="/treks/<%= trek._id %>?_method=delete" method="post" class="d-inline">
-                    <button class="btn btn-danger">Delete</button>
-                </form>
-                <a href="/treks/<%=trek._id%>/edit" class="btn btn-info">Edit Details</a>
+            <div class=" text-center text-muted">
+                <%= trek.author.username %>
             </div>
-            <a href="/treks" class="btn btn-primary mt-3">Show all Treks</a>
+            <hr>
+            <% if(currentUser && trek.author.equals(currentUser._id)) {%>
+                <div class="d-flex flex-row flex-wrap justify-content-around mt-3">
+                    <form action="/treks/<%= trek._id %>?_method=delete" method="post" class="d-inline">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                    <a href="/treks/<%=trek._id%>/edit" class="btn btn-info">Edit Details</a>
+                </div>
+                <a href="/treks" class="btn btn-primary mt-3">Show all Treks</a>
+                <% } %>
         </div>
     </div>
     <% for(let review of trek.reviews){ %>
@@ -36,35 +42,42 @@
                 <h5 class="card-title">
                     Rating: <%=review.rating %>
                 </h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <%= review.author.username %>
+                </h6>
                 <p class="card-text">
                     Review: <%=review.body %>
                 </p>
-                <form action="/treks/<%=trek._id %>/reviews/<%=review._id%>?_method=DELETE" method="post">
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                </form>
+                <% if(currentUser && review.author.equals(currentUser._id)) {%>
+                    <form action="/treks/<%=trek._id %>/reviews/<%=review._id%>?_method=DELETE" method="post">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                    <% } %>
             </div>
         </div>
         <% }%>
             <div>
-                <h3 class="display-5">
-                    Leave a Review
-                </h3>
-                <form action="/treks/<%=trek._id %>/reviews" method="POST" class="my-3 validatedForm" novalidate>
-                    <div class="my-3">
-                        <label class="form-label" for="rating">Rating</label>
-                        <input type="range" id="rating" class="form-range" min="1" max="5" name="review[rating]">
-                    </div>
-                    <div class="my-3">
-                        <label class="form-label" for="body">Review</label>
-                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
-                            required></textarea>
-                        <div class="valid-feedback">
-                            Theek 🤠
+                <% if(currentUser){ %>
+                    <h3 class="display-5">
+                        Leave a Review
+                    </h3>
+                    <form action="/treks/<%=trek._id %>/reviews" method="POST" class="my-3 validatedForm" novalidate>
+                        <div class="my-3">
+                            <label class="form-label" for="rating">Rating</label>
+                            <input type="range" id="rating" class="form-range" min="1" max="5" name="review[rating]">
                         </div>
-                        <div class="invalid-feedback">
-                            Khali Mat chodo bhaiya
+                        <div class="my-3">
+                            <label class="form-label" for="body">Review</label>
+                            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
+                                required></textarea>
+                            <div class="valid-feedback">
+                                Theek 🤠
+                            </div>
+                            <div class="invalid-feedback">
+                                Khali Mat chodo bhaiya
+                            </div>
                         </div>
-                    </div>
-                    <button class="btn btn-success">Submit</button>
-                </form>
+                        <button class="btn btn-success">Submit</button>
+                    </form>
+                    <% } %>
             </div>
