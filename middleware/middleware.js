@@ -50,4 +50,5 @@ module.exports.isReviewAuthor = async (req, res, next) => {
         req.flash('error', 'You do not have Permission to do that');
         return res.redirect(`/treks/${id}`);
     }
+    next();
 }
