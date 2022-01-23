@@ -11,8 +11,10 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createTrekSpot = async (req, res, next) => {
     const trek = new Trek(req.body.trek);
+    trek.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     trek.author = req.user._id;
     await trek.save()
+    console.log(trek);
     req.flash('success', 'Successfully made a new Trek Spot');
     res.redirect(`/treks/${trek._id}`)
 };

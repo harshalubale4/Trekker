@@ -9,13 +9,10 @@ const upload = multer({ storage });
 
 router.route('/')
     .get(catchAsync(treks.index))
-    // .post(isLoggedIn,
-    //     validateTrekker,
-    //     catchAsync(treks.createTrekSpot));
-    .post(upload.array('image'), (req, res) => {
-        console.log(req.body, req.files);
-        res.send('It Worked');
-    })
+    .post(isLoggedIn,
+        upload.array('image'),
+        validateTrekker,
+        catchAsync(treks.createTrekSpot))
 
 router.get("/new",
     isLoggedIn,
