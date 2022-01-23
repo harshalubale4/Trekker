@@ -1,4 +1,5 @@
 const Trek = require('../models/trekker')
+const { cloudinary } = require("../cloudinary/index");
 
 module.exports.index = async (req, res) => {
     const treks = await Trek.find({})
@@ -46,10 +47,16 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateTrekSpot = async (req, res) => {
     const { id } = req.params;
-    trek = await Trek.findByIdAndUpdate(id, { ...req.body.trek })
+    const trek = await Trek.findByIdAndUpdate(id, { ...req.body.trek })
     const images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     trek.images.push(...images);
     await trek.save();
+    if (req.body.deleteImages) {
+        for (let filename of req.body.deleteImages) {
+            await cloudinary.uploader.destroy(filename);
+        }
+        await trek.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
+    }
     req.flash('success', 'Successfully Updated Trek Spot')
     res.redirect(`/treks/${trek._id}`)
 };
