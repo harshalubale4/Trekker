@@ -2,41 +2,59 @@
     <link rel="stylesheet" href="/CSS Files/starstylesheet.css">
 
     <div class="row">
-        <% for(let img of trek.images){ %>
-            <div class="col-lg-6 bg-black p-2 rounded-2">
-                <img src="<%=img.url  %> " alt="" class="img-fluid">
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <% trek.images.forEach((img, i)=>{ %>
+                    <div class="col-lg-6 bg-black p-2 rounded-2 carousel-item <%=i === 0 ? 'active': '' %> ">
+                        <img src="<%=img.url  %> " alt="" class="img-fluid d-block w-100">
+                    </div>
+                    <% }) %>
             </div>
-            <% } %>
-                <div class="col-lg-6 d-flex flex-column justify-content-between align-self-center">
-                    <h1 class="display-5 text-center">
-                        <%=trek.title %>
-                    </h1>
-                    <p class="text-center">
-                        <%=trek.description %>
-                    </p>
-                    <hr>
-                    <div>
-                        Rs<%=trek.price %> / Head
-                    </div>
-                    <hr>
-                    <div class=" text-center text-muted">
-                        <%= trek.location %>
-                    </div>
-                    <hr>
-                    <div class=" text-center text-muted">
-                        <%= trek.author.username %>
-                    </div>
-                    <hr>
-                    <% if(currentUser && trek.author.equals(currentUser._id)) {%>
-                        <div class="d-flex flex-row flex-wrap justify-content-around mt-3">
-                            <form action="/treks/<%= trek._id %>?_method=delete" method="post" class="d-inline">
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
-                            <a href="/treks/<%=trek._id%>/edit" class="btn btn-info">Edit Details</a>
-                        </div>
-                        <a href="/treks" class="btn btn-primary mt-3">Show all Treks</a>
-                        <% } %>
+            <% if(trek.images.length !==1){ %>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <% } %>
+        </div>
+
+        <div class="col-lg-6 d-flex flex-column justify-content-between align-self-center">
+            <h1 class="display-5 text-center">
+                <%=trek.title %>
+            </h1>
+            <p class="text-center">
+                <%=trek.description %>
+            </p>
+            <hr>
+            <div>
+                Rs<%=trek.price %> / Head
+            </div>
+            <hr>
+            <div class=" text-center text-muted">
+                <%= trek.location %>
+            </div>
+            <hr>
+            <div class=" text-center text-muted">
+                <%= trek.author.username %>
+            </div>
+            <hr>
+            <% if(currentUser && trek.author.equals(currentUser._id)) {%>
+                <div class="d-flex flex-row flex-wrap justify-content-around mt-3">
+                    <form action="/treks/<%= trek._id %>?_method=delete" method="post" class="d-inline">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                    <a href="/treks/<%=trek._id%>/edit" class="btn btn-info">Edit Details</a>
                 </div>
+                <a href="/treks" class="btn btn-primary mt-3">Show all Treks</a>
+                <% } %>
+        </div>
     </div>
     <% for(let review of trek.reviews){ %>
         <div class="card my-3">

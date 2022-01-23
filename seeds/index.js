@@ -19,8 +19,25 @@ const seedingDB = async () => {
             author: '61ebd66eefba93fc9cea68bf',
             location: trek.location,
             description: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati tempore doloremque quam, illum ullam officia quod aliquam at voluptatem mollitia ut sed exercitationem. Ratione eveniet maxime vero. Corporis, vero vitae.",
-            image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dHJla2tpbmd8ZW58MHx8MHx8&w=1000&q=80",
-            price: 500
+            price: 500,
+            images: [
+                {
+                    url: 'https://res.cloudinary.com/dqg4yv2bd/image/upload/v1642919691/Trekker/oswr4jxaqzbbzbft9fkt.jpg',
+                    filename: 'Trekker/oswr4jxaqzbbzbft9fkt',
+                },
+                {
+                    url: 'https://res.cloudinary.com/dqg4yv2bd/image/upload/v1642919692/Trekker/rq6qldlpboswpxaduwbo.jpg',
+                    filename: 'Trekker/rq6qldlpboswpxaduwbo',
+                },
+                {
+                    url: 'https://res.cloudinary.com/dqg4yv2bd/image/upload/v1642919694/Trekker/ar6nex5xywbiaqvxok2p.jpg',
+                    filename: 'Trekker/ar6nex5xywbiaqvxok2p',
+                },
+                {
+                    url: 'https://res.cloudinary.com/dqg4yv2bd/image/upload/v1642919696/Trekker/vdrtezfrw2vr0uhozcyv.jpg',
+                    filename: 'Trekker/vdrtezfrw2vr0uhozcyv',
+                }
+            ]
         })
         await newTrek.save()
     }

@@ -22,6 +22,7 @@ router.route('/:id')
     .get(catchAsync(treks.showTrekSpot))
     .put(isAuthor,
         isLoggedIn,
+        upload.array('image'),
         validateTrekker,
         catchAsync(treks.updateTrekSpot))
     .delete(isAuthor,

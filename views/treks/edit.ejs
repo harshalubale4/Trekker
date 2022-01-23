@@ -7,8 +7,8 @@
 
     <div class="row">
         <div class="col-6 offset-3">
-            <form action="/treks/<%= trek._id %>?_method=put" method="post" method="post" class="mb-3 validatedForm"
-                novalidate>
+            <form action="/treks/<%= trek._id %>?_method=put" method="post" class="mb-3 validatedForm" novalidate
+                enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">
                         Title
@@ -36,11 +36,10 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="from-label">
-                        Image URL
+                    <label for="image" class="from-label" id="image">
+                        Add Images
                     </label>
-                    <input type="text" name="trek[image]" id="image" class="form-control" value="<%= trek.image%>"
-                        required>
+                    <input type="file" name="image" form="image" multiple>
                     <div class="valid-feedback">
                         Theek 🤠
                     </div>

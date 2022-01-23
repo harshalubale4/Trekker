@@ -47,6 +47,9 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.updateTrekSpot = async (req, res) => {
     const { id } = req.params;
     trek = await Trek.findByIdAndUpdate(id, { ...req.body.trek })
+    const images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+    trek.images.push(...images);
+    await trek.save();
     req.flash('success', 'Successfully Updated Trek Spot')
     res.redirect(`/treks/${trek._id}`)
 };
