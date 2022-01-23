@@ -3,12 +3,19 @@ const router = express.Router();
 const catchAsync = require("../utilities/CatchAsyncError");
 const treks = require('../controllers/treks');
 const { isLoggedIn, isAuthor, validateTrekker } = require('../middleware/middleware');
+const multer = require('multer')
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
 
 router.route('/')
     .get(catchAsync(treks.index))
-    .post(isLoggedIn,
-        validateTrekker,
-        catchAsync(treks.createTrekSpot));
+    // .post(isLoggedIn,
+    //     validateTrekker,
+    //     catchAsync(treks.createTrekSpot));
+    .post(upload.array('image'), (req, res) => {
+        console.log(req.body, req.files);
+        res.send('It Worked');
+    })
 
 router.get("/new",
     isLoggedIn,

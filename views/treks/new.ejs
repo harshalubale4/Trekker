@@ -4,7 +4,7 @@
     </h1>
     <div class="row">
         <div class="col-6 offset-3">
-            <form action="/treks" method="post" class="mb-3 validatedForm" novalidate>
+            <form action="/treks" method="post" class="mb-3 validatedForm" novalidate enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">
                         Title
@@ -29,7 +29,8 @@
                         Kripaya Location Dale
                     </div>
                 </div>
-                <div class="mb-3">
+                <input type="file" name="image" multiple>
+                <!-- <div class="mb-3">
                     <label for="image" class="form-label">
                         Image URL
                     </label>
@@ -40,7 +41,7 @@
                     <div class="invalid-feedback">
                         Kripaya Chitra ka Pata Dijiye
                     </div>
-                </div>
+                </div> -->
                 <div class="mb-3">
                     <label class="form-label" for="price">Trek Price</label>
                     <div class="input-group w-50">
