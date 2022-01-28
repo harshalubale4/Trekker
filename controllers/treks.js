@@ -19,15 +19,14 @@ module.exports.createTrekSpot = async (req, res, next) => {
         query: req.body.trek.location,
         limit: 1
     }).send()
-    console.log(geoData.body.features[0].geometry.coordinates);
-    res.send("ok");
-    // const trek = new Trek(req.body.trek);
-    // trek.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    // trek.author = req.user._id;
-    // await trek.save()
-    // // console.log(trek);
-    // req.flash('success', 'Successfully made a new Trek Spot');
-    // res.redirect(`/treks/${trek._id}`)
+    const trek = new Trek(req.body.trek);
+    trek.geometry = geoData.body.features[0].geometry;
+    trek.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+    trek.author = req.user._id;
+    await trek.save()
+    console.log(trek);
+    req.flash('success', 'Successfully made a new Trek Spot');
+    res.redirect(`/treks/${trek._id}`)
 };
 
 module.exports.showTrekSpot = async (req, res) => {
