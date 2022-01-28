@@ -6,19 +6,25 @@
     <div class="cardContainer">
         <% for (let trek of treks){ %>
             <div class="cardOfTrek">
-                <img src="<%=trek.images[0].url%>" alt="" class="trekImage img-fluid">
-                <h1>
-                    <%=trek.title%>
-                </h1>
-                <p class="desc">
-                    <%=trek.description %>
-                </p>
-                <div class="text-muted">
-                    <%=trek.location %>
-                </div>
-                <div class="text-center">
-                    <a href="/treks/<%=trek._id %>"><button class="btn btn-primary">View <%=trek.title %> </button></a>
-                </div>
+                <% if(trek.images.length){ %>
+                    <img src="<%=trek.images[0].url%>" alt="" class="trekImage img-fluid">
+                    <% }else{ %>
+                        <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt=""
+                            class="trekImage img-fluid">
+                        <% } %>
+                            <h1>
+                                <%=trek.title%>
+                            </h1>
+                            <p class="desc">
+                                <%=trek.description %>
+                            </p>
+                            <div class="text-muted">
+                                <%=trek.location %>
+                            </div>
+                            <div class="text-center">
+                                <a href="/treks/<%=trek._id %>"><button class="btn btn-primary">View <%=trek.title %>
+                                    </button></a>
+                            </div>
             </div>
             <% } %>
     </div>
