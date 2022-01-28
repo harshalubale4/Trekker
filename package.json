@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.13.2",
     "@mui/material": "^5.2.7",
     "cloudinary": "^1.28.1",
     "connect-flash": "^0.1.1",
@@ -19,6 +20,7 @@
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "joi": "^17.5.0",
+    "mapbox": "^1.0.0-beta10",
     "method-override": "^3.0.0",
     "mongoose": "^6.1.4",
     "multer": "^1.4.4",
