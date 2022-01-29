@@ -1,7 +1,7 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
     container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    style: 'mapbox://styles/mapbox/dark-v10', // style URL
     center: trekSpotInfo.info.geometry.coordinates, // starting position [lng, lat]
     zoom: 13 // starting zoom
 });
@@ -15,3 +15,5 @@ const markerOfCity = new mapboxgl.Marker({ color: 'black', rotation: 45 })
             )
     )
     .addTo(map);
+
+map.addControl(new mapboxgl.NavigationControl());

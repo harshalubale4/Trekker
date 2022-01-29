@@ -50,7 +50,7 @@ const TrekkerSchema = new Schema({
             ref: "Review"
         }
     ]
-})
+});
 
 TrekkerSchema.post("findOneAndDelete", async function (doc) {
     if (doc) {

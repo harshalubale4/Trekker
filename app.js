@@ -1,6 +1,8 @@
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-}
+// if (process.env.NODE_ENV !== "production") {
+//     require('dotenv').config();
+// }
+
+require('dotenv').config();
 
 const express = require("express");
 const app = express();
@@ -18,16 +20,18 @@ const reviewRoutes = require("./routes/reviews")
 const userRoutes = require("./routes/users");
 const flash = require('connect-flash');
 const sessionConfig = {
+    name: 'session',
     secret: "thisisagoofysecret",
     resave: false,
     saveUninitialized: true,
     cookie: {
+        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7,
         httpOnly: true
     }
 }
-
+const mongoSanitize = require('express-mongo-sanitize');
 
 app.engine("ejs", ejsMate)
 app.set("view engine", "ejs")
@@ -40,6 +44,8 @@ app.use(session(sessionConfig));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(mongoSanitize());
+
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

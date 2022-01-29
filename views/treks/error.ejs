@@ -4,7 +4,9 @@
         <h4 class="alert-heading">
             <%=err.message%>
         </h4>
-        <p>
-            <%=err.stack %>
-        </p>
+        <% if (process.env.NODE_ENV==="dev" ) {%>
+            <p>
+                <%=err.stack %>
+            </p>
+            <% } %>
     </div>
