@@ -11,8 +11,10 @@
                 <% if(trek.images.length){ %>
                     <img src="<%=trek.images[0].url%>" alt="" class="trekImage img-fluid">
                     <% }else{ %>
-                        <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt=""
-                            class="trekImage img-fluid">
+                        <div class="imageContainer">
+                            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt=""
+                                class="trekImage img-fluid">
+                        </div>
                         <% } %>
                             <h1 class="trekTitle text-center">
                                 <%=trek.title%>

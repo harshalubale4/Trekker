@@ -1,5 +1,5 @@
 .cardOfTrek{
-    min-height: 68vh;
+    max-height: 68vh;
     width: 75vh;
     padding: 7px;
     color: white;
@@ -12,9 +12,13 @@
 }
 
 .trekImage{
+box-sizing: border-box;
 border-radius: 2em;
 }
 .trekTitle{
     font-size: 2rem;
 }
 
+.imageContainer{
+
+}
