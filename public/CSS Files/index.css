@@ -1,6 +1,6 @@
 .cardOfTrek{
     max-height: 68vh;
-    width: 75vh;
+    width: 67vh;
     padding: 7px;
     color: white;
     background-color: black;
@@ -20,5 +20,7 @@ border-radius: 2em;
 }
 
 .imageContainer{
-
+    box-sizing: border-box;
+    object-fit: contain;
+    position: relative;
 }
