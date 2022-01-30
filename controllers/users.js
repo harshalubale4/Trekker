@@ -35,5 +35,5 @@ module.exports.userSignIn = (req, res) => {
 module.exports.userLogOut = (req, res) => {
     req.logout();
     req.flash('success', 'Successfully Logged Out');
-    res.redirect('/treks');
+    res.redirect('/');
 };

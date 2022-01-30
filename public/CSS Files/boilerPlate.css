@@ -1,0 +1,32 @@
+body{
+    height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    background-color: black;
+ }
+ 
+ a{
+     text-decoration: none;
+ }
+ .navBrand {
+     font-family: 'Comforter', cursive;
+     color: white !important;
+     font-size: 5rem;
+ }
+ 
+ .navBarContainer{
+   max-width: 60vw;
+ }
+ 
+ .navLinks{
+     color: white;
+     font-size: 1.1rem;
+     transition: 0.4s;
+ }
+ .navLinks:hover{
+     color: rgb(174, 182, 196);
+     transform: translateY(-2px);
+ }
+ 
+ .copyRightContainer{
+    font-size: 1.1rem;
+ }
