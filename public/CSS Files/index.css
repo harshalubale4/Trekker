@@ -1,35 +1,20 @@
-.cardContainer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
 .cardOfTrek{
-    min-height: 73vh;
-    width: 55vh;
-    padding: 10px;
+    min-height: 68vh;
+    width: 75vh;
+    padding: 7px;
     color: white;
     background-color: black;
-    border-radius: 2.5em;
+    border-radius: 2.0em;
     border: 5px solid white;
     box-sizing: border-box;
     margin: 10px;
     object-fit: contain;
-    transition: 0.5s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .trekImage{
 border-radius: 2em;
 }
-
-.desc{
-    overflow-y: hidden;
-    height: 15%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: normal;
+.trekTitle{
+    font-size: 2rem;
 }
+

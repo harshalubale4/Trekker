@@ -1,29 +1,44 @@
 <% layout("layouts/boilerplate") %>
-    <div id="map" style="width:100%; height:500px"></div>
-    <h1 class="text-center display-4">
+
+    <div id="map" class="mx-auto w-auto"></div>
+    <h1 class="text-center display-4 mt-5 mb-4 border-white border-5">
         Trek Spots
     </h1>
 
-    <div class="cardContainer">
+    <div class="d-flex flex-row justify-content-around align-items-center flex-wrap">
         <% for (let trek of treks){ %>
-            <div class="cardOfTrek">
+            <div class="cardOfTrek d-flex flex-column justify-content-between text-center">
                 <% if(trek.images.length){ %>
                     <img src="<%=trek.images[0].url%>" alt="" class="trekImage img-fluid">
                     <% }else{ %>
                         <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt=""
                             class="trekImage img-fluid">
                         <% } %>
-                            <h1>
+                            <h1 class="trekTitle text-center">
                                 <%=trek.title%>
                             </h1>
                             <p class="desc">
-                                <%=trek.description %>
+                                <%=trek.description.substr(0, 40) %>
                             </p>
-                            <div class="text-muted">
+                            <div class="text-muted mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                </svg>
                                 <%=trek.location %>
                             </div>
-                            <div class="text-center">
-                                <a href="/treks/<%=trek._id %>"><button class="btn btn-primary">View <%=trek.title %>
+                            <div class="text-center my-1">
+                                <a href="/treks/<%=trek._id %>"><button class="btn btn-dark">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                            <path
+                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                            <path
+                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                        </svg>
+                                        <%=trek.title %>
                                     </button></a>
                             </div>
             </div>

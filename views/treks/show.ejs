@@ -1,65 +1,100 @@
 <% layout("layouts/boilerplate") %>
     <link rel="stylesheet" href="/CSS Files/starstylesheet.css">
+    <link rel="stylesheet" href="/CSS Files/show.css">
 
-
-
-    <div class="row">
-        <div id='map' style='width:400px;height:300px;'>
-
-        </div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <% trek.images.forEach((img, i)=>{ %>
-                    <div class="col-lg-6 bg-black p-2 rounded-2 carousel-item <%=i === 0 ? 'active': '' %> ">
-                        <img src="<%=img.url  %> " alt="" class="img-fluid d-block w-100">
-                    </div>
-                    <% }) %>
-            </div>
-            <% if(trek.images.length !==1){ %>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                <% } %>
-        </div>
-
-        <div class="col-lg-6 d-flex flex-column justify-content-between align-self-center">
-            <h1 class="display-5 text-center">
-                <%=trek.title %>
-            </h1>
-            <p class="text-center">
-                <%=trek.description %>
-            </p>
-            <hr>
-            <div>
-                Rs<%=trek.price %> / Head
-            </div>
-            <hr>
-            <div class=" text-center text-muted">
-                <%= trek.location %>
-            </div>
-            <hr>
-            <div class=" text-center text-muted">
-                <%= trek.author.username %>
-            </div>
-            <hr>
-            <% if(currentUser && trek.author.equals(currentUser._id)) {%>
-                <div class="d-flex flex-row flex-wrap justify-content-around mt-3">
-                    <form action="/treks/<%= trek._id %>?_method=delete" method="post" class="d-inline">
-                        <button class="btn btn-danger">Delete</button>
-                    </form>
-                    <a href="/treks/<%=trek._id%>/edit" class="btn btn-info">Edit Details</a>
+    <div id="carouselExampleControls" class="carousel slide mb-5" data-ride="carousel">
+        <div class="carousel-inner">
+            <% trek.images.forEach((img, i)=>{ %>
+                <div class="col-lg-6 bg-black p-2 rounded-2 carousel-item <%=i === 0 ? 'active': '' %> ">
+                    <img src="<%=img.url  %> " alt="" class="img-fluid d-block carouselImage mx-auto">
                 </div>
-                <a href="/treks" class="btn btn-primary mt-3">Show all Treks</a>
-                <% } %>
+                <% }) %>
+        </div>
+        <% if(trek.images.length !==1){ %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <% } %>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 descContainer">
+                <div class="d-flex flex-column justify-content-around align-self-center">
+                    <h1 class="display-4 text-center">
+                        <%=trek.title %>
+                    </h1>
+
+                    <p class="text-center h6 my-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-text-paragraph" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <%=trek.description %>
+                    </p>
+                    <p class="text-center my-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-wallet2" viewBox="0 0 16 16">
+                            <path
+                                d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />
+                        </svg>
+                        <%=trek.price %> / Head
+                    </p>
+
+                    <div class="d-flex flex-wrap flex-row justify-content-center align-items-center my-1">
+                        <div class="text-muted h-6 mx-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            </svg>
+                            <%= trek.author.username %>
+                        </div>
+                        <div class=" text-center text-muted mx-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            </svg>
+                            <%= trek.location %>
+                        </div>
+                    </div>
+
+
+                    <% if(currentUser && trek.author.equals(currentUser._id)) {%>
+                        <div class="d-flex flex-row flex-wrap justify-content-center mt-3 ">
+                            <form action="/treks/<%= trek._id %>?_method=delete" method="post" class="d-inline">
+                                <button class="btn btn-danger mx-3">Delete</button>
+                            </form>
+                            <a href="/treks/<%=trek._id%>/edit" class="btn btn-warning mx-3 text-white">Edit Details</a>
+                        </div>
+                        <div class="text-center my-3">
+                            <a href="/treks" class="btn btn-dark">Show all Treks</a>
+                        </div>
+                        <% } %>
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+                <div id='map'></div>
+            </div>
         </div>
     </div>
+
+
+
+
     <% for(let review of trek.reviews){ %>
         <div class="card my-3">
             <div class="card-body">

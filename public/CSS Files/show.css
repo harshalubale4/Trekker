@@ -1,0 +1,19 @@
+.carouselImage{
+    border-radius: 25px;
+    width: 70vw;
+}
+
+@media (max-width: 400px) {
+    .carouselImage{
+        width: 100vw;
+    }
+}
+
+.descContainer{
+    border: 5px solid white;
+    border-radius: 20px;
+}
+
+#map{
+    width:400px;height:300px;
+}
