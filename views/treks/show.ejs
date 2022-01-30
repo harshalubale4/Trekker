@@ -2,29 +2,6 @@
     <link rel="stylesheet" href="/CSS Files/starstylesheet.css">
     <link rel="stylesheet" href="/CSS Files/show.css">
 
-    <div id="carouselExampleControls" class="carousel slide mb-5" data-ride="carousel">
-        <div class="carousel-inner">
-            <% trek.images.forEach((img, i)=>{ %>
-                <div class="col-lg-6 bg-black p-2 rounded-2 carousel-item <%=i === 0 ? 'active': '' %> ">
-                    <img src="<%=img.url  %> " alt="" class="img-fluid d-block carouselImage mx-auto">
-                </div>
-                <% }) %>
-        </div>
-        <% if(trek.images.length !==1){ %>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            <% } %>
-    </div>
-
-
     <div class="container">
         <div class="row">
             <div class="col-md-8 descContainer">
@@ -83,8 +60,6 @@
                         </div>
                         <% } %>
                 </div>
-
-
             </div>
             <div class="col-md-4">
                 <div id='map'></div>
@@ -95,22 +70,53 @@
 
 
 
-    <% for(let review of trek.reviews){ %>
-        <div class="card my-3">
-            <div class="card-body">
+    <div id="carouselExampleControls" class="carousel slide my-5" data-ride="carousel">
+        <div class="carousel-inner">
+            <% trek.images.forEach((img, i)=>{ %>
+                <div class="col-lg-6 bg-black p-2 rounded-2 carousel-item <%=i === 0 ? 'active': '' %> ">
+                    <img src="<%=img.url  %> " alt="" class="img-fluid d-block carouselImage mx-auto">
+                </div>
+                <% }) %>
+        </div>
+        <% if(trek.images.length !==1){ %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <% } %>
+    </div>
 
-                <h5 class="card-title">
-                    Rating: <%=review.rating %>
-                </h5>
-                <h6 class="card-subtitle mb-2 text-muted">
+
+
+
+    <div class="d-flex flex-row justify-content-around align-items-center my-5 flex-wrap">
+        <% for(let review of trek.reviews){ %>
+            <div
+                class="myReview my-3 text-white bg-black d-flex flex-column justify-content-around align-items-center text-center">
+                <h4 class="my- text-muted">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-person" viewBox="0 0 16 16">
+                        <path
+                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                    </svg>
                     <%= review.author.username %>
-                </h6>
-                <h3>Ratings</h3>
+                </h4>
                 <p class="starability-result" data-rating="<%=review.rating %>">
                     Rated: 3 stars
                 </p>
                 <p class="card-text">
-                    Review: <%=review.body %>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                    </svg>
+                    <%=review.body %>
                 </p>
                 <% if(currentUser && review.author.equals(currentUser._id)) {%>
                     <form action="/treks/<%=trek._id %>/reviews/<%=review._id%>?_method=DELETE" method="post">
@@ -118,53 +124,51 @@
                     </form>
                     <% } %>
             </div>
-        </div>
-        <% }%>
-            <div>
-                <% if(currentUser){ %>
-                    <h3 class="display-5">
-                        Leave a Review
-                    </h3>
-                    <form action="/treks/<%=trek._id %>/reviews" method="POST" class="my-3 validatedForm" novalidate>
+            <% }%>
+    </div>
+    <div>
+        <% if(currentUser){ %>
+            <h3 class="display-6">
+                Leave a Review
+            </h3>
+            <form action="/treks/<%=trek._id %>/reviews" method="POST" class="my-3 validatedForm" novalidate>
+                <fieldset class="starability-slot">
+                    <legend>Ratings:</legend>
+                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                        aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+                <div class="my-3">
+                    <label class="form-label" for="body">Review</label>
+                    <textarea class="form-control" name="review[body]" id="body" cols="20" rows="3" required></textarea>
+                    <div class="valid-feedback">
+                        Theek 🤠
+                    </div>
+                    <div class="invalid-feedback">
+                        Khali Mat chodo bhaiya
+                    </div>
+                </div>
+                <button class="btn btn-dark">Submit</button>
+            </form>
+            <% } %>
 
-                        <fieldset class="starability-slot">
-                            <legend>First rating:</legend>
-                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1"
-                                checked aria-label="No rating." />
-                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                            <label for="first-rate1" title="Terrible">1 star</label>
-                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                            <label for="first-rate2" title="Not good">2 stars</label>
-                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                            <label for="first-rate3" title="Average">3 stars</label>
-                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                            <label for="first-rate4" title="Very good">4 stars</label>
-                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                            <label for="first-rate5" title="Amazing">5 stars</label>
-                        </fieldset>
-                        <div class="my-3">
-                            <label class="form-label" for="body">Review</label>
-                            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
-                                required></textarea>
-                            <div class="valid-feedback">
-                                Theek 🤠
-                            </div>
-                            <div class="invalid-feedback">
-                                Khali Mat chodo bhaiya
-                            </div>
-                        </div>
-                        <button class="btn btn-success">Submit</button>
-                    </form>
-                    <% } %>
+    </div>
 
-            </div>
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN %>';
+        const trekInfo = '<%-JSON.stringify(trek)%>';
+        const trekSpotInfo = {
+            info: JSON.parse(trekInfo)
+        }
+    </script>
 
-            <script>
-                const mapToken = '<%-process.env.MAPBOX_TOKEN %>';
-                const trekInfo = '<%-JSON.stringify(trek)%>';
-                const trekSpotInfo = {
-                    info: JSON.parse(trekInfo)
-                }
-            </script>
-
-            <script src="/Javascript Files/showPageMap.js"></script>
+    <script src="/Javascript Files/showPageMap.js"></script>
