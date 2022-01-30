@@ -24,24 +24,24 @@
 </nav> -->
 
 <div
-    class="navBarContainer container d-flex flex-row align-items-center justify-content-between p-3 flex-wrap text-center">
+    class="navBarContainer container d-flex flex-row align-items-center justify-content-lg-between justify-content-around p-3 flex-wrap text-center">
     <div class="text-center">
         <a class="navBrand me-4" href="#">
             Trekker
         </a>
     </div>
-    <div class="p-3 d-flex flex-row justify-content-between flex-wrap text-center">
+    <div class="p-3 d-flex flex-row justify-content-around flex-wrap text-center">
         <!-- <a href="/signin" class="mx-3 navLinks ">Log In</a>
     <a href="/signup" class="mx-3 navLinks ">Sign Up</a> -->
 
         <% if(!currentUser) {%>
             <a href="/treks" class="mx-3 navLinks ">Explore</a>
-            <a href="/signin" class="mx-3 navLinks ">Log In</a>
             <a href="/signup" class="mx-3 navLinks ">Sign Up</a>
+            <a href="/signin" class="mx-3 navLinks ">Log In</a>
             <% } else {%>
                 <a href="/treks" class="mx-3 navLinks ">Explore</a>
                 <a class="mx-3 navLinks" href="/treks/new">Add Trek Spot</a>
-                <a class="mx-3 navLinks" href="/logout">Logout</a>
+                <a class="mx-3 navLinks" href="/logout">Log Out</a>
                 <% } %>
     </div>
 </div>

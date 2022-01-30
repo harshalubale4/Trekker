@@ -1,0 +1,55 @@
+body{
+    height: 100vh;
+    background-image:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url("/Images/Home.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+ }
+ 
+ a{
+     text-decoration: none;
+ }
+ .navBrand {
+     font-family: 'Comforter', cursive;
+     color: white !important;
+     font-size: 5rem;
+ }
+ 
+ .navBarContainer{
+   max-width: 60vw;
+ }
+ 
+ .navLinks{
+     color: white;
+     font-size: 1.1rem;
+     transition: 0.4s;
+ }
+ .navLinks:hover{
+     color: rgb(174, 182, 196);
+     transform: translateY(-2px);
+ }
+ 
+ .myBox{
+     background-color: red;
+     height: auto;
+ }
+ .trekkerHeading{
+     font-size: 2rem;
+ }
+ #myButton{
+     color: rgb(255, 255, 255);
+     font-size:1.4rem ;
+     transition: 0.2s;
+     border-bottom: 5px solid rgb(255, 255, 255);
+     border-radius: 8px;
+ }
+ #myButton:hover{
+     color: rgb(194, 201, 206);
+     border: 5px solid rgb(255, 255, 255);
+     border-radius: 8px;
+ }
+ 
+ .copyRightContainer{
+    font-size: 1.1rem;
+ }

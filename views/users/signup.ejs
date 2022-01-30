@@ -1,46 +1,47 @@
-<% layout('layouts/boilerplate') %>
-    <h1>
+<% layout("layouts/customBoilerPlate.ejs") %>
+    <h1 class="text-center mb-3">
         Register
     </h1>
     <form action="/signup" method="POST" class="validatedForm" novalidate>
+        <div class="d-flex flex-column align-items-center text-center">
+            <div class="mb-3">
+                <label for="username" class="form-label">
+                    Username
+                </label>
+                <input type="text" name="username" id="username" class="form-control" required>
+                <div class="valid-feedback">
+                    Theek 🤠
+                </div>
+                <div class="invalid-feedback">
+                    Kripaya Location Dale
+                </div>
+            </div>
 
-        <div class="mb-3">
-            <label for="username" class="form-label">
-                Username
-            </label>
-            <input type="text" name="username" id="username" class="form-control" required>
-            <div class="valid-feedback">
-                Theek 🤠
+            <div class="mb-3">
+                <label for="email" class="form-label">
+                    Email
+                </label>
+                <input type="email" name="email" id="email" class="form-control" required>
+                <div class="valid-feedback">
+                    Theek 🤠
+                </div>
+                <div class="invalid-feedback">
+                    Kripaya Location Dale
+                </div>
             </div>
-            <div class="invalid-feedback">
-                Kripaya Location Dale
-            </div>
-        </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">
-                Email
-            </label>
-            <input type="email" name="email" id="email" class="form-control" required>
-            <div class="valid-feedback">
-                Theek 🤠
+            <div class="mb-3">
+                <label for="password" class="form-label">
+                    Password
+                </label>
+                <input type="password" name="password" id="password" class="form-control" required>
+                <div class="valid-feedback">
+                    Theek 🤠
+                </div>
+                <div class="invalid-feedback">
+                    Kripaya Location Dale
+                </div>
             </div>
-            <div class="invalid-feedback">
-                Kripaya Location Dale
-            </div>
+            <button class="btn btn-dark">Submit</button>
         </div>
-
-        <div class="mb-3">
-            <label for="password" class="form-label">
-                Password
-            </label>
-            <input type="password" name="password" id="password" class="form-control" required>
-            <div class="valid-feedback">
-                Theek 🤠
-            </div>
-            <div class="invalid-feedback">
-                Kripaya Location Dale
-            </div>
-        </div>
-        <button class="btn btn-info">Submit</button>
     </form>
