@@ -1,4 +1,4 @@
-<% layout("layouts/boilerplate") %>
+<% layout("layouts/customBoilerPlate.ejs") %>
 
 
     <h1 class="text-center display-4">
@@ -9,32 +9,44 @@
         <div class="col-6 offset-3">
             <form action="/treks/<%= trek._id %>?_method=put" method="post" class="mb-3 validatedForm" novalidate
                 enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="title" class="form-label">
-                        Title
-                    </label>
-                    <input type="text" name="trek[title]" id="title" class="form-control" value="<%= trek.title %>"
-                        required>
-                    <div class="valid-feedback">
-                        Theek 🤠
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">
+                                Title
+                            </label>
+                            <input type="text" name="trek[title]" id="title" class="form-control"
+                                value="<%= trek.title %>" required>
+                            <div class="valid-feedback">
+                                Theek 🤠
+                            </div>
+                            <div class="invalid-feedback">
+                                Kripaya Title Dalne Ka Kasht Kare
+                            </div>
+                        </div>
                     </div>
-                    <div class="invalid-feedback">
-                        Kripaya Title Dalne Ka Kasht Kare
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="location" class="form-label">
+                                Location
+                            </label>
+                            <input type="text" name="trek[location]" id="location" class="form-control"
+                                value="<%= trek.location %>" required>
+                            <div class="valid-feedback">
+                                Theek 🤠
+                            </div>
+                            <div class="invalid-feedback">
+                                Kripaya Location Dale
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="location" class="from-label">
-                        Location
-                    </label>
-                    <input type="text" name="trek[location]" id="location" value="<%= trek.location %>"
-                        class="form-control" required>
-                    <div class="valid-feedback">
-                        Theek 🤠
-                    </div>
-                    <div class="invalid-feedback">
-                        Kripaya Location Dale
-                    </div>
-                </div>
+
+
+
+
                 <div class="mb-3">
                     <label for="image" class="from-label">
                         Add Images
@@ -82,9 +94,9 @@
                         <% })%>
                 </div>
 
-
-                <button class="btn btn-info">Update Trek Spot</button>
+                <div class="text-center">
+                    <button class="btn btn-info ">Update Trek Spot</button>
+                </div>
             </form>
-            <a href="/treks"><button class="btn btn-success">All Treks</button></a>
         </div>
     </div>

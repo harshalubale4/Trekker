@@ -1,11 +1,108 @@
-<% layout("layouts/boilerplate") %>
-    <h1 class="text-center display-4">
+<% layout("layouts/customBoilerPlate.ejs") %>
+    <link rel="stylesheet" href="/CSS Files/new.css">
+
+
+
+    <h1 class="text-center display-5">
         Create a New Trek Spot
     </h1>
+
+
+    <div class="formContainer mx-auto">
+        <form action="/treks" method="post" class="mb-3 validatedForm" novalidate enctype="multipart/form-data">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3 text-center">
+                            <label for="title" class="form-label">
+                                Title
+                            </label>
+                            <input type="text" name="trek[title]" id="title" class="form-control" required>
+                            <div class="valid-feedback">
+                                Theek 🤠
+                            </div>
+                            <div class="invalid-feedback">
+                                Kripaya Title Dalne Ka Kasht Kare
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3 text-center">
+                            <label for="location" class="form-label">
+                                Location
+                            </label>
+                            <input type="text" name="trek[location]" id="location" class="form-control" required>
+                            <div class="valid-feedback">
+                                Theek 🤠
+                            </div>
+                            <div class="invalid-feedback">
+                                Kripaya Location Dale
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="text-center">
+                        Images
+                    </div>
+                    <div class="col mb-3">
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="inputGroupFile04"
+                                aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="image" multiple>
+                            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"
+                                required>Button</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 text-center">
+                        <label class="form-label" for="price">Trek Price</label>
+                        <div class="input-group w-50 mx-auto">
+                            <span class="input-group-text" id="price-label">💰</span>
+                            <input type="text" class="form-control" placeholder="0" aria-label="price-label"
+                                name="trek[price]" aria-describedby="price-label" id="price" required>
+                            <div class="valid-feedback">
+                                Theek 🤠
+                            </div>
+                            <div class="invalid-feedback">
+                                Kimat Daliye Janab
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="description" class="form-label">
+                            Description
+                        </label>
+                        <textarea type="text" name="trek[description]" id="description" class="form-control"
+                            required></textarea>
+                        <div class="valid-feedback">
+                            Theek 🤠
+                        </div>
+                        <div class="invalid-feedback">
+                            Apne Ehesas Ke Bare Me Vistar Me Bataye
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Add Trek Spot</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
     <div class="row">
         <div class="col-6 offset-3">
             <form action="/treks" method="post" class="mb-3 validatedForm" novalidate enctype="multipart/form-data">
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label for="title" class="form-label">
                         Title
                     </label>
@@ -16,8 +113,8 @@
                     <div class="invalid-feedback">
                         Kripaya Title Dalne Ka Kasht Kare
                     </div>
-                </div>
-                <div class="mb-3">
+                </div> -->
+                <!-- <div class="mb-3">
                     <label for="location" class="form-label">
                         Location
                     </label>
@@ -28,15 +125,15 @@
                     <div class="invalid-feedback">
                         Kripaya Location Dale
                     </div>
-                </div>
-                <div class="input-group">
+                </div> -->
+                <!-- <div class="input-group">
                     <input type="file" class="form-control" id="inputGroupFile04"
                         aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="image" multiple>
                     <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"
                         required>Button</button>
-                </div>
+                </div> -->
 
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label class="form-label" for="price">Trek Price</label>
                     <div class="input-group w-50">
                         <span class="input-group-text" id="price-label">💰</span>
@@ -49,8 +146,8 @@
                             Kimat Daliye Janab
                         </div>
                     </div>
-                </div>
-                <div class="mb-3">
+                </div> -->
+                <!-- <div class="mb-3">
                     <label for="description" class="form-label">
                         Description
                     </label>
@@ -62,9 +159,9 @@
                     <div class="invalid-feedback">
                         Apne Ehesas Ke Bare Me Vistar Me Bataye
                     </div>
-                </div>
-                <button class="btn btn-primary">Add Trek Spot</button>
+                </div> -->
+                <!-- <button class="btn btn-primary">Add Trek Spot</button> -->
             </form>
-            <a href="/treks"><button class="btn btn-success">All Treks</button></a>
+            <!-- <a href="/treks"><button class="btn btn-success">All Treks</button></a> -->
         </div>
     </div>

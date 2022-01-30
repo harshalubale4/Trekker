@@ -4,30 +4,30 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 descContainer">
-                <div class="d-flex flex-column justify-content-around align-self-center">
-                    <h1 class="display-4 text-center">
+            <div class="col-lg-8 ">
+                <div class="d-flex flex-column justify-content-around h-100 descContainer">
+                    <div class="display-4 text-center">
                         <%=trek.title %>
-                    </h1>
+                    </div>
 
-                    <p class="text-center h6 my-1">
+                    <div class="text-center h6 ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                             class="bi bi-text-paragraph" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                 d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z" />
                         </svg>
                         <%=trek.description %>
-                    </p>
-                    <p class="text-center my-1">
+                    </div>
+                    <div class="text-center ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-wallet2" viewBox="0 0 16 16">
                             <path
                                 d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />
                         </svg>
                         <%=trek.price %> / Head
-                    </p>
+                    </div>
 
-                    <div class="d-flex flex-wrap flex-row justify-content-center align-items-center my-1">
+                    <div class="d-flex flex-wrap flex-row justify-content-center align-items-center">
                         <div class="text-muted h-6 mx-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
@@ -61,8 +61,8 @@
                         <% } %>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div id='map'></div>
+            <div class="col-lg-4">
+                <div id='map' class="my-5 mx-auto"></div>
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
                 </div>
                 <% }) %>
         </div>
-        <% if(trek.images.length !==1){ %>
+        <% if(trek.images.length> 1){ %>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

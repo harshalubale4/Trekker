@@ -12,10 +12,12 @@
 .descContainer{
     border: 5px solid white;
     border-radius: 20px;
+    min-height: 300px;
 }
 
 #map{
-    width:400px;height:300px;
+    width:400px;
+    height:300px;
 }
 
 

@@ -1,6 +1,7 @@
 const Trek = require('../models/trekker');
 const { cloudinary } = require("../cloudinary/index");
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
+const { findById } = require('../models/review');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
@@ -55,8 +56,14 @@ module.exports.renderEditForm = async (req, res) => {
 };
 
 module.exports.updateTrekSpot = async (req, res) => {
+    const geoData = await geocoder.forwardGeocode({
+        query: req.body.trek.location,
+        limit: 1
+    }).send()
+
     const { id } = req.params;
     const trek = await Trek.findByIdAndUpdate(id, { ...req.body.trek })
+    trek.geometry = geoData.body.features[0].geometry;
     const images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     trek.images.push(...images);
     await trek.save();
