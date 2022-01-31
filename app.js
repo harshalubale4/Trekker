@@ -17,9 +17,33 @@ const trekRoutes = require("./routes/trekker")
 const reviewRoutes = require("./routes/reviews")
 const userRoutes = require("./routes/users");
 const flash = require('connect-flash');
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/trekker'
+const secret = process.env.SECRET || 'thisisagoofysecret';
+
+mongoose.connect(dbUrl)
+    .then(() => {
+        console.log("Mongo Connection Open")
+    })
+    .catch((e) => {
+        console.log("Mongo Connection ERROR")
+        console.log(e)
+    })
+
+// 'mongodb://localhost:27017/trekker'
+const MongoDBStore = require('connect-mongo');
+const store = new MongoDBStore({
+    mongoUrl: dbUrl,
+     secret,
+    touchAfter: 24 * 3600
+});
+
+store.on("error", function(e){
+    console.log("Session Store Error", e);
+})
 const sessionConfig = {
+    store,
     name: 'session',
-    secret: "thisisagoofysecret",
+     secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -30,13 +54,7 @@ const sessionConfig = {
     }
 }
 const mongoSanitize = require('express-mongo-sanitize');
-const dbUrl = 'mongodb://localhost:27017/trekker'
-// 'mongodb://localhost:27017/trekker'
-const MongoDBStore = require('connect-mongo');
-// const store = new MongoDBStore({
-//     url: dbUrl,
 
-// })
 
 app.engine("ejs", ejsMate)
 app.set("view engine", "ejs")
@@ -61,15 +79,6 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
-
-mongoose.connect(dbUrl)
-    .then(() => {
-        console.log("Mongo Connection Open")
-    })
-    .catch((e) => {
-        console.log("Mongo Connection ERROR")
-        console.log(e)
-    })
 
 
 app.use("/treks", trekRoutes);

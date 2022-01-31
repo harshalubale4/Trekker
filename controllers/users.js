@@ -27,7 +27,7 @@ module.exports.renderSignInForm = (req, res) => {
 
 module.exports.userSignIn = (req, res) => {
     req.flash('success', 'Welcome To Trekker');
-    const redirectUrl = req.session.returnTo || 'treks';
+    const redirectUrl = req.session.returnTo || '/';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
 };
