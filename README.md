@@ -15,15 +15,16 @@ It is a Website that helps a user to Explore different Trek Spots all over the w
 
 ## To Run this Application On Your Computer
 You'll need to configure following accounts and get its tokens or private keys:
-    - CLoudinary
-    - Map Box
-    - MongoDB Atlas
+- CLoudinary
+- Map Box
+- MongoDB Atlas
+
 Then you'll need to put those in env file by Defining these Variables:
-    - CLOUDINARY_KEY
-    - CLOUDINARY_NAME
-    - CLOUDINARY_SECRET
-    - DB_URL
-    - MAPBOX_TOKEN
+- CLOUDINARY_KEY
+- CLOUDINARY_NAME
+- CLOUDINARY_SECRET
+- DB_URL
+- MAPBOX_TOKEN
 
 ## 💻Tech Stack
 
