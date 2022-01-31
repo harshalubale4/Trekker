@@ -3,7 +3,7 @@ mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/dark-v10', // style URL
-    center: trekingInfo.geometry.coordinates, // starting position [lng, lat]
+    center: trekInfo.geometry.coordinates, // starting position [lng, lat]
     zoom: 13 // starting zoom
 });
 

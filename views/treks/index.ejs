@@ -2,12 +2,13 @@
 
     <script>
         const mapToken = '<%=process.env.MAPBOX_TOKEN %> ';
+        const trekInfo ={features: <%- JSON.stringify(treks) %> };
     </script>
 
 
 
 
-    <div id="map" style="height:500px;" class="mx-auto w-auto"></div>
+    <div id="map" style="height:400px;" class="mx-auto w-auto"></div>
     <h1 class="text-center display-4 mt-5 mb-4 border-white border-5">
         Trek Spots
     </h1>
@@ -53,12 +54,5 @@
             </div>
             <% } %>
     </div>
-
-    <script>
-        const trekInfo = '<%-JSON.stringify(treks)%>';
-        const trekSpotInfo = {
-            features: JSON.parse(trekInfo)
-        }
-    </script>
 
     <script src="/Javascript Files/clusterMap.js"></script>
