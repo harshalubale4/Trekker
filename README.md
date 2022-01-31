@@ -41,16 +41,16 @@ Then you'll need to put those in env file by Defining these Variables:
 ## 📷Mobile View 😋
 
 ### Home 
-<img src="/public/Images/Snapshots/HomePage.jpeg" style="height:220px;width:160px"/>
+<img src="/public/Images/Snapshots/HomePage.jpeg" style="height:622px;width:350px"/>
 
 ### Log In 
-<img src="/public/Images/Snapshots/LogInPage.jpeg" style="height:220px;width:160px"/>
+<img src="/public/Images/Snapshots/LogInPage.jpeg" style="height:622px;width:350px"/>
 
 ### Reviews
-<img src="/public/Images/Snapshots/Reviews.jpeg" style="height:220px;width:160px"/>
+<img src="/public/Images/Snapshots/Reviews.jpeg" style="height:622px;width:350px"/>
 
 ### TrekSpots
-<img src="/public/Images/Snapshots/TrekSpots.jpeg" style="height:220px;width:160px"/>
+<img src="/public/Images/Snapshots/TrekSpots.jpeg" style="height:622px;width:350px"/>
 
 
 
