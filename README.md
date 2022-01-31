@@ -26,10 +26,16 @@ Then you'll need to put those in env file by Defining these Variables:
 - DB_URL
 - MAPBOX_TOKEN
 
--In the Next Step you'll have to install all the required Dependencies by executing following Command
+Then you need to follow these Steps:
+- Then you'll need to install all the Required Dependancies for this Project, you can do so by Executing the Following Code on your Command Prompt while remaining in the same Directory as the one in which you've Cloned the Repository.
+  ```javascript
+    npm install
+    ```
+- Then you can start the App by Executing the Following Command on your Command Prompt, but remember that you need to execute the following Command while remaining in the same Directory as the one in which you've Cloned the Repository.
   ```javascript
     npm start
     ```
+- Then the App will start Running on your Web Browser on Port 3000.
 
 ## 💻Tech Stack
 
