@@ -7,15 +7,14 @@ const map = new mapboxgl.Map({
     zoom: 13 // starting zoom
 });
 
-// map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new mapboxgl.NavigationControl());
 
 const markerOfCity = new mapboxgl.Marker({ color: 'blue' })
-    .setLngLat(trekingInfo.geometry.coordinates)
+    .setLngLat(trekInfo.geometry.coordinates)
     .setPopup(
         new mapboxgl.Popup({ offset: 25 })
             .setHTML(
-                `<h4 class="text-black"> ${trekingInfo.title}</h4><p class="text-black"> ${trekingInfo.location}</p>`
+                `<h4 class="text-black"> ${trekInfo.title}</h4><p class="text-black"> ${trekInfo.location}</p>`
             )
     )
     .addTo(map);
-
