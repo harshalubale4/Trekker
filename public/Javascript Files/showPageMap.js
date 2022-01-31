@@ -1,19 +1,21 @@
 mapboxgl.accessToken = mapToken;
+
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/dark-v10', // style URL
-    center: trekSpotInfo.info.geometry.coordinates, // starting position [lng, lat]
+    center: trekingInfo.geometry.coordinates, // starting position [lng, lat]
     zoom: 13 // starting zoom
 });
 
-const markerOfCity = new mapboxgl.Marker({ color: 'black', rotation: 45 })
-    .setLngLat(trekSpotInfo.info.geometry.coordinates)
+// map.addControl(new mapboxgl.NavigationControl());
+
+const markerOfCity = new mapboxgl.Marker({ color: 'blue' })
+    .setLngLat(trekingInfo.geometry.coordinates)
     .setPopup(
         new mapboxgl.Popup({ offset: 25 })
             .setHTML(
-                `<h3> ${trekSpotInfo.info.title}</h3><p> ${trekSpotInfo.info.location}</p>`
+                `<h4 class="text-black"> ${trekingInfo.title}</h4><p class="text-black"> ${trekingInfo.location}</p>`
             )
     )
     .addTo(map);
 
-map.addControl(new mapboxgl.NavigationControl());

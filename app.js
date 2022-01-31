@@ -1,8 +1,6 @@
-// if (process.env.NODE_ENV !== "production") {
-//     require('dotenv').config();
-// }
-
-require('dotenv').config();
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
 
 const express = require("express");
 const app = express();
@@ -32,6 +30,13 @@ const sessionConfig = {
     }
 }
 const mongoSanitize = require('express-mongo-sanitize');
+const dbUrl = 'mongodb://localhost:27017/trekker'
+// 'mongodb://localhost:27017/trekker'
+const MongoDBStore = require('connect-mongo');
+// const store = new MongoDBStore({
+//     url: dbUrl,
+
+// })
 
 app.engine("ejs", ejsMate)
 app.set("view engine", "ejs")
@@ -57,7 +62,7 @@ app.use((req, res, next) => {
     next();
 })
 
-mongoose.connect('mongodb://localhost:27017/trekker')
+mongoose.connect(dbUrl)
     .then(() => {
         console.log("Mongo Connection Open")
     })

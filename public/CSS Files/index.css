@@ -1,6 +1,6 @@
 .cardOfTrek{
-    max-height: 68vh;
-    width: 67vh;
+    min-height: 68vh;
+    width: 60vh;
     padding: 7px;
     color: white;
     background-color: black;
