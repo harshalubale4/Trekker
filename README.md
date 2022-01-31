@@ -26,6 +26,11 @@ Then you'll need to put those in env file by Defining these Variables:
 - DB_URL
 - MAPBOX_TOKEN
 
+-In the Next Step you'll have to install all the required Dependencies by executing following Command
+  ```javascript
+    npm start
+    ```
+
 ## 💻Tech Stack
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" title="HTML"><img src="https://github.com/get-icon/geticon/raw/master/icons/html-5.svg" alt="HTMl" width="31px" height="31px"></a>
