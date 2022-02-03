@@ -11,7 +11,7 @@ It is a Website that helps a user to Explore different Trek Spots all over the w
 
 ## 👀Live View
 
-### 🎞️ [Trekker](https://salty-thicket-13361.herokuapp.com/)
+### 🎞️ [Trekker](https://trekkervjti.herokuapp.com/)
 
 ## To Run this Application On Your Computer
 You'll need to configure following accounts and get its tokens or private keys:
