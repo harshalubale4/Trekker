@@ -1,6 +1,6 @@
 .carouselImage{
-    border-radius: 25px;
-    width: 70vw;
+    border-radius: 20px;
+    max-height: 80vh;
 }
 
 @media (max-width: 400px) {
@@ -19,7 +19,6 @@
     width:auto;
     height:300px;
 }
-
 
 .myReview{
     border: 5px solid white;

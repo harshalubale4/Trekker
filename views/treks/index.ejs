@@ -2,27 +2,28 @@
 
     <script>
         const mapToken = '<%=process.env.MAPBOX_TOKEN %> ';
-        const trekInfo ={features: <%- JSON.stringify(treks) %> };
+        const trekInfo = { features: <%- JSON.stringify(treks) %> };
     </script>
 
 
 
 
     <div id="map" style="height:400px;" class="mx-auto w-auto"></div>
+    
     <h1 class="text-center display-4 mt-5 mb-4 border-white border-5">
         Trek Spots
     </h1>
 
     <div class="d-flex flex-row justify-content-around align-items-center flex-wrap">
         <% for (let trek of treks){ %>
-            <div class="cardOfTrek d-flex flex-column justify-content-between text-center">
+            <div class="cardOfTrek d-flex flex-column justify-content-between text-center py-3 px-4">
                 <% if(trek.images.length){ %>
-                    <img src="<%=trek.images[0].url%>" alt="" class="trekImage img-fluid">
+                    <div class="imageContainer">
+                        <img src="<%=trek.images[0].url%>" alt="" class="trekImage img-fluid">
+                    </div>
                     <% }else{ %>
-                        <div class="imageContainer">
-                            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt=""
-                                class="trekImage img-fluid">
-                        </div>
+                        <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt=""
+                            class="trekImage img-fluid">
                         <% } %>
                             <h1 class="trekTitle text-center">
                                 <%=trek.title%>

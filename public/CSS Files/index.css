@@ -12,15 +12,18 @@
 }
 
 .trekImage{
-box-sizing: border-box;
-border-radius: 2em;
-}
-.trekTitle{
-    font-size: 2rem;
+    max-height: 40vh;
+    box-sizing: border-box;
+    background-size: contain;
+    background-position: left;
+    border-radius: 2em;
 }
 
 .imageContainer{
     box-sizing: border-box;
-    object-fit: contain;
-    position: relative;
+    background-size: contain;
+}
+
+.trekTitle{
+    font-size: 2rem;
 }
